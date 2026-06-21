@@ -17,6 +17,13 @@ const obtenerPersonaje = async () => {
 
 const cargarPersonajes = (listaPersonajes) => {
   listaPersonajes.forEach((personaje) => {
+    let estadoPersonaje;
+
+    if (personaje.status.toLowerCase() === "alive") {
+      estadoPersonaje = `<span class="badge bg-success-subtle text-success rounded-pill px-3 py-2 fs-6"> Vivo </span>`;
+    } else {
+      estadoPersonaje = `<span class="badge bg-danger-subtle text-danger rounded-pill px-3 py-2 fs-6"> Fallecido </span>`;
+    }
     const imagen = baseCDN + personaje.portrait_path;
 
     containerRow.innerHTML += `
