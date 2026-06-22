@@ -1,0 +1,17 @@
+body {
+  font-family:
+    "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  background-image: url("../img/fondoPagina.webp");
+  background-size: cover;
+  background-position: center;
+}
+
+.fondoHeader {
+  background-color: #eed233;
+}
+
+.fondoDePagina {
+  background-color: #ffffffb0;
+  width: 1700px;
+}

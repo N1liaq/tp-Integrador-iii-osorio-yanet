@@ -16,94 +16,102 @@
     />
     <link rel="stylesheet" href="assets/css/style.css" />
   </head>
-  <body>
-    <header>
-      <div class="row">
-        <div class="col-sm-12 col-md-6 col-lg-4 m-auto mt-3">
-          <form class="d-flex p-3" role="search">
-            <input
-              class="form-control me-2"
-              type="search"
-              placeholder="búsqueda de personajes"
-              aria-label="Search"
-              id="buscador"
-            />
 
-            <button
-              class="btn btn-warning ms-2 d-none"
-              type="button"
-              id="recargar"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="currentColor"
-                class="bi bi-arrow-counterclockwise"
-                viewBox="0 0 16 16"
+  <body>
+    <div class="fondoHeader">
+      <header>
+        <div class="row">
+          <div class="col-sm-12 col-md-6 col-lg-4 m-auto mt-3">
+            <form class="d-flex p-3" role="search">
+              <input
+                class="form-control me-2"
+                type="search"
+                placeholder="búsqueda de personajes"
+                aria-label="Search"
+                id="buscador"
+              />
+
+              <button
+                class="btn btn-light ms-2 d-none"
+                type="button"
+                id="recargar"
               >
-                <path
-                  fill-rule="evenodd"
-                  d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2z"
-                />
-                <path
-                  d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466"
-                />
-              </svg>
-            </button>
-          </form>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-arrow-counterclockwise"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2z"
+                  />
+                  <path
+                    d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466"
+                  />
+                </svg>
+              </button>
+            </form>
+          </div>
         </div>
-      </div>
-      <h1 class="text-center p-5">Los Simpsons</h1>
-    </header>
-    <main>
-      <div class="container">
-        <div class="row" id="rowContainer"></div>
-        <div
-          class="modal fade"
-          id="exampleModal"
-          tabindex="-1"
-          aria-labelledby="exampleModalLabel"
-          aria-hidden="true"
-        >
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">
-                  New message
-                </h1>
-                <button
-                  type="button"
-                  class="btn-close"
-                  data-bs-dismiss="modal"
-                  aria-label="Close"
-                ></button>
-              </div>
-              <div class="modal-body">
-                <form>
-                  <div class="mb-3">
-                    <label for="recipient-name" class="col-form-label"
-                      >Recipient:</label
-                    >
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="recipient-name"
-                    />
-                  </div>
-                  <div class="mb-3">
-                    <label for="message-text" class="col-form-label"
-                      >Message:</label
-                    >
-                    <textarea class="form-control" id="message-text"></textarea>
-                  </div>
-                </form>
+        <h1 class="text-center p-5">Los Simpsons</h1>
+      </header>
+    </div>
+    <div class="container-fluid fondoDePagina">
+      <main>
+        <div class="container">
+          <div class="row" id="rowContainer"></div>
+          <div
+            class="modal fade"
+            id="exampleModal"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">
+                    New message
+                  </h1>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <div class="mb-3">
+                      <label for="recipient-name" class="col-form-label"
+                        >Recipient:</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="recipient-name"
+                      />
+                    </div>
+                    <div class="mb-3">
+                      <label for="message-text" class="col-form-label"
+                        >Message:</label
+                      >
+                      <textarea
+                        class="form-control"
+                        id="message-text"
+                      ></textarea>
+                    </div>
+                  </form>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </main>
+      </main>
+    </div>
     <script src="assets/js/app.js"></script>
   </body>
 </html>
