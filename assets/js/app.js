@@ -5,6 +5,8 @@ const baseCDN = "https://cdn.thesimpsonsapi.com/500";
 const containerRow = document.getElementById("rowContainer");
 const buscador = document.getElementById("buscador");
 const botonRecargar = document.getElementById("recargar");
+const myModal = new bootstrap.Modal("#modal");
+const titleH1 = document.querySelector("#exampleModalLabel");
 
 let todosLosPersonajes = [];
 
@@ -14,6 +16,17 @@ const obtenerPersonaje = async () => {
     const data = await response.json();
     console.log(data);
     return data.results.slice(0, 10);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const obtenerUnPersonaje = async (idPersonaje) => {
+  try {
+    const response = await fetch(`${urlApiIndividual}${idPersonaje}`);
+    const data = await response.json();
+
+    return data[0];
   } catch (error) {
     console.log(error);
   }
@@ -92,5 +105,21 @@ const mostrarPersonajes = async () => {
     console.log(error);
   }
 };
+
+const verDetalle = async (id) => {
+  const personaje = await obtenerUnPersonaje(id);
+  console.log(personaje[0].name);
+};
+
+containerRow.addEventListener("click", async (e) => {
+  if (e.target.classList.contains("btn-verMas")) {
+    const idPeronsaje = e.target.results.id;
+    console.log(idPeronsaje);
+    const personaje = await obtenerUnPersonaje(idPersonaje);
+    titleH1.textContent = personaje.name;
+
+    myModal.show();
+  }
+});
 
 mostrarPersonajes();
