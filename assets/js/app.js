@@ -3,10 +3,21 @@ const urlApiIndividual = "https://thesimpsonsapi.com/api/characters/";
 const baseCDN = "https://cdn.thesimpsonsapi.com/500";
 
 const containerRow = document.getElementById("rowContainer");
+const ladoIzq = document.getElementById("ladoIzq");
+const ladoDer = document.getElementById("ladoDer");
+const contenidoModal = document.querySelector(".contenidoModal");
 const buscador = document.getElementById("buscador");
 const botonRecargar = document.getElementById("recargar");
 const myModal = new bootstrap.Modal("#modal");
 const titleH1 = document.querySelector("#exampleModalLabel");
+const mNombre = document.querySelector("#mNombre");
+const mEdad = document.querySelector("#mEdad");
+const mNacim = document.querySelector("#mNacim");
+const mGenero = document.querySelector("#mGenero");
+const mOcupacion = document.querySelector("#mOcupacion");
+const mEstado = document.querySelector("#mEstado");
+const mFrase = document.querySelector("#mFrase");
+const mImagen = document.querySelector("#mImagen");
 
 let todosLosPersonajes = [];
 
@@ -14,7 +25,7 @@ const obtenerPersonaje = async () => {
   try {
     const response = await fetch(urlApiGeneral);
     const data = await response.json();
-    console.log(data);
+    // console.log(data);
     return data.results.slice(0, 10);
   } catch (error) {
     console.log(error);
@@ -25,8 +36,8 @@ const obtenerUnPersonaje = async (idPersonaje) => {
   try {
     const response = await fetch(`${urlApiIndividual}${idPersonaje}`);
     const data = await response.json();
-
-    return data[0];
+    console.log(data);
+    return data;
   } catch (error) {
     console.log(error);
   }
@@ -46,7 +57,7 @@ const cargarPersonajes = (listaPersonajes) => {
     const imagen = baseCDN + personaje.portrait_path;
 
     containerRow.innerHTML += `
-       <div class="col-sm-12 col-md-6 col-lg-3 my-3 d-flex justify-content-center mt-5 mb-4" data-id=${personaje.id}>
+       <div class="col-sm-12 col-md-6 col-lg-3 my-3 d-flex justify-content-center mt-5 mb-4">
               <div class="card d-flex flex-column h-100" style="width: 25rem"> 
               <img
                   src= ${imagen}
@@ -62,7 +73,7 @@ const cargarPersonajes = (listaPersonajes) => {
                    </li>
                    <li class="card-text">Estado: ${estadoPersonaje}</li>
                   <ul>           
-                  <a href="#" class="btn btn-primary btn-verMas text-center pl-4 mt-5"> Ver mas detalles</a>
+                  <a href="#" data-id=${personaje.id} class="btn btn-primary btn-verMas text-center pl-4 mt-5" > Ver mas detalles</a>
                 </div>
               </div>
             </div>
@@ -91,7 +102,7 @@ buscador.addEventListener("input", () => {
 });
 
 botonRecargar.addEventListener("click", () => {
-  buscador.value = " ";
+  buscador.value = "";
   botonRecargar.classList.add("d-none");
   cargarPersonajes(todosLosPersonajes);
 });
@@ -113,10 +124,34 @@ const verDetalle = async (id) => {
 
 containerRow.addEventListener("click", async (e) => {
   if (e.target.classList.contains("btn-verMas")) {
-    const idPeronsaje = e.target.results.id;
-    console.log(idPeronsaje);
-    const personaje = await obtenerUnPersonaje(idPersonaje);
-    titleH1.textContent = personaje.name;
+    e.preventDefault();
+
+    const idPersonaje = e.target.dataset.id;
+    const personajeData = await obtenerUnPersonaje(idPersonaje);
+
+    const personaje = Array.isArray(personajeData)
+      ? personajeData[0]
+      : personajeData;
+
+    if (!personaje) return;
+
+    const estado =
+      personaje.status.toLowerCase() === "alive"
+        ? `<span class="badge bg-success text-white px-3 py-2 rounded-pill">Vivo</span>`
+        : `<span class="badge bg-danger text-white px-3 py-2 rounded-pill">Fallecido</span>`;
+
+    const imagenUrl = baseCDN + personaje.portrait_path;
+    mImagen.innerHTML = `<img src="${imagenUrl}" alt="${personaje.name}" class="img-fluid rounded shadow-sm" style="max-height: 280px; object-fit: contain;">`;
+
+    mNombre.textContent = personaje.name || "Desconocido";
+    mEdad.textContent = personaje.age || "Desconocida";
+    mNacim.textContent = personaje.birthdate || "Desconocida";
+    mGenero.textContent = personaje.gender === "M" ? "Masculino" : "Femenino";
+    mOcupacion.textContent = personaje.occupation || "Ninguna";
+    mEstado.innerHTML = estado;
+    mFrase.textContent = personaje.phrases
+      ? `"${personaje.phrases[0]}"`
+      : "No tiene frase conocida";
 
     myModal.show();
   }

@@ -62,45 +62,66 @@
 
           <div
             class="modal fade"
-            id="Modal"
+            id="modal"
             tabindex="-1"
             aria-labelledby="exampleModalLabel"
             aria-hidden="true"
           >
-            <div class="modal-dialog">
-              <div class="modal-content">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+              <div class="modal-content position-relative">
                 <div class="modal-header">
-                  <h1 class="modal-title fs-5" id="exampleModalLabel">
-                    New message
-                  </h1>
+                  <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
                   <button
                     type="button"
-                    class="btn-close"
+                    class="btn-close boton-cerrar-custom"
                     data-bs-dismiss="modal"
                     aria-label="Close"
                   ></button>
+                  <div class="modal-body">
+                    <div class="row align-items-center">
+                      <div
+                        class="col-md-5 text-center mb-3 mb-md-0"
+                        id="ladoIzq"
+                      >
+                        <div id="mImagen"></div>
+                      </div>
+                      <div class="col-md-7" id="ladoDer">
+                        <ul class="list-group list-group-flush">
+                          <li class="list-group-item">
+                            <strong>Nombre:</strong> <span id="mNombre"></span>
+                          </li>
+                          <li class="list-group-item">
+                            <strong>Edad:</strong> <span id="mEdad"></span>
+                          </li>
+                          <li class="list-group-item">
+                            <strong>Fecha de nacimiento:</strong>
+                            <span id="mNacim"></span>
+                          </li>
+                          <li class="list-group-item">
+                            <strong>Género:</strong> <span id="mGenero"></span>
+                          </li>
+                          <li class="list-group-item">
+                            <strong>Ocupación:</strong>
+                            <span id="mOcupacion"></span>
+                          </li>
+                          <li class="list-group-item">
+                            <strong>Estado:</strong> <span id="mEstado"></span>
+                          </li>
+                          <li class="list-group-item">
+                            <strong>Frase:</strong>
+                            <span
+                              id="mFrase"
+                              class="fst-italic text-muted"
+                            ></span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <div class="modal-body">
                   <form>
-                    <div class="mb-3">
-                      <label for="recipient-name" class="col-form-label"
-                        >Recipient:</label
-                      >
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="recipient-name"
-                      />
-                    </div>
-                    <div class="mb-3">
-                      <label for="message-text" class="col-form-label"
-                        >Message:</label
-                      >
-                      <textarea
-                        class="form-control"
-                        id="message-text"
-                      ></textarea>
-                    </div>
+                    <div class="contenidoModal mb-3"></div>
                   </form>
                 </div>
               </div>

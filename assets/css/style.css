@@ -15,3 +15,15 @@ body {
   background-color: #ffffffb0;
   width: 1700px;
 }
+
+.boton-cerrar-custom {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 1050;
+}
+
+.list-group-item {
+  border-color: #f0f0f0;
+  padding: 10px 0;
+}
